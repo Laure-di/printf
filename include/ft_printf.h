@@ -6,7 +6,7 @@
 /*   By: lmasson <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 17:13:07 by lmasson           #+#    #+#             */
-/*   Updated: 2021/04/21 14:16:50 by lauremass        ###   ########.fr       */
+/*   Updated: 2021/04/22 12:41:11 by lauremass        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ char				*ft_strdup(char *s1);
 int					len_number_bis(unsigned long long int nbr, int base_len);
 char				*ft_itoa_base(unsigned long long int nbr, char *base);
 char				*ft_transform(long long nbr, t_flags flags);
+char				*create(char specifier, long long nbr);
+void				manage_negative(long long *nbr, int *minus, char specifier);
 void				write_space(int j, int *count, int width);
 void				ft_putchar_count(char c, int *j, int *count);
 void				print_nullable_char(t_flags flags, char c, int *count);

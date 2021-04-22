@@ -6,7 +6,7 @@
 /*   By: lmasson <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 15:34:11 by lmasson           #+#    #+#             */
-/*   Updated: 2021/04/21 13:52:17 by lauremass        ###   ########.fr       */
+/*   Updated: 2021/04/22 12:34:31 by lauremass        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@ char		*convert_pointer(t_flags flags, void *pointer)
 		to_transform = initialize_str(1);
 	else
 		to_transform = ft_transform((unsigned long long)pointer, flags);
+	if (!to_transform)
+		return (NULL);
 	final = ft_strjoin(start, to_transform);
+	if (!final)
+		return (NULL);
 	free(to_transform);
 	return (final);
 }
@@ -36,6 +40,8 @@ char		*create_to_print_ptr(t_flags flags, int len)
 		to_print = initialize_str(len + 1);
 	else
 		to_print = initialize_str(flags.width + 1);
+	if (!to_print)
+		return (NULL);
 	return (to_print);
 }
 
@@ -48,6 +54,8 @@ char		*treat_flags_pointer(t_flags flags, char *to_transform,
 
 	len = ft_strlen(to_transform);
 	to_print = create_to_print_ptr(flags, len);
+	if (!to_print)
+		return (NULL);
 	len_total = ft_strlen(to_print);
 	*count += len_total;
 	if (flags.minus == 1)

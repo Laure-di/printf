@@ -6,7 +6,7 @@
 /*   By: lauremasson <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 14:16:36 by lauremass         #+#    #+#             */
-/*   Updated: 2021/04/21 12:10:27 by lauremass        ###   ########.fr       */
+/*   Updated: 2021/04/22 12:36:28 by lauremass        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,13 @@ char		*width_lower_str(t_flags flags, int len, int *count)
 			to_print = initialize_str(flags.precision + 1);
 			*count += flags.precision;
 		}
+		if (!to_print)
+			return (NULL);
 		return (to_print);
 	}
 	to_print = initialize_str(len + 1);
+	if (!to_print)
+		return (NULL);
 	*count += len;
 	return (to_print);
 }
@@ -49,6 +53,8 @@ char		*create_string(t_flags *flags, int len, int *count)
 		to_print = initialize_str(flags->width + 1);
 		*count += flags->width;
 	}
+	if (!to_print)
+		return (NULL);
 	return (to_print);
 }
 
@@ -72,6 +78,8 @@ void		manage_flags_str(t_flags *flags, char *str, int len, int *count)
 	int		width;
 
 	to_print = create_string(flags, len, count);
+	if (!to_print)
+		return ;
 	width = ft_strlen(to_print);
 	if (flags->minus == 1)
 		print_minus(*flags, str, len, to_print);

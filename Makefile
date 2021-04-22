@@ -15,7 +15,8 @@ SRC_FILES=	ft_printf.c \
 					print_unsigned.c \
 					print_hexa.c \
 					print_pointer.c \
-					utils.c
+					utils.c \
+					itoa_utils.c 
 
 
 OBJS	=		${addprefix ${SRC_DIR},${SRC_FILES:.c=.o}}

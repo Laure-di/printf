@@ -6,7 +6,7 @@
 /*   By: lauremasson <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 21:02:06 by lauremass         #+#    #+#             */
-/*   Updated: 2021/04/21 13:54:04 by lauremass        ###   ########.fr       */
+/*   Updated: 2021/04/22 12:38:20 by lauremass        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ char		*higher_width_unsigned(t_flags flags)
 		else
 			to_print = initialize_str(flags.width + 1);
 	}
+	if (!to_print)
+		return (NULL);
 	return (to_print);
 }
 
@@ -56,6 +58,8 @@ char		*create_to_print_unsigned(t_flags flags, int len)
 				to_print = initialize_str(len + 1);
 		}
 	}
+	if (!to_print)
+		return (NULL);
 	return (to_print);
 }
 
@@ -67,6 +71,8 @@ char		*treat_flags_unsigned(t_flags *flags, char *number, int *count)
 
 	len = ft_strlen(number);
 	to_print = create_to_print_unsigned(*flags, len);
+	if (!to_print)
+		return (NULL);
 	len_final = ft_strlen(to_print);
 	*count += len_final;
 	if (len <= flags->precision)
@@ -97,6 +103,8 @@ char		*create_to_transform(t_flags *flags, unsigned nbr)
 	}
 	else
 		to_transform = ft_transform((unsigned long long)nbr, *flags);
+	if (!to_transform)
+		return (NULL);
 	return (to_transform);
 }
 

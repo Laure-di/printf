@@ -6,7 +6,7 @@
 /*   By: lauremasson <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 15:28:29 by lauremass         #+#    #+#             */
-/*   Updated: 2021/04/21 14:15:18 by lauremass        ###   ########.fr       */
+/*   Updated: 2021/04/22 12:32:19 by lauremass        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ char		*higher_width(t_flags flags)
 		else
 			to_print = initialize_str(flags.width + 1);
 	}
+	if (!to_print)
+		return (NULL);
 	return (to_print);
 }
 
@@ -46,6 +48,8 @@ char		*create_to_print_hexa(t_flags flags, int len)
 				to_print = initialize_str(len + 1);
 		}
 	}
+	if (!to_print)
+		return (NULL);
 	return (to_print);
 }
 
@@ -57,6 +61,8 @@ char		*treat_flags_hexa(t_flags flags, char *number, int *count)
 
 	len = ft_strlen(number);
 	to_print = create_to_print_hexa(flags, len);
+	if (!to_print)
+		return (NULL);
 	len_final = ft_strlen(to_print);
 	*count += len_final;
 	if (len <= flags.precision)
@@ -94,6 +100,8 @@ void		print_hexa(va_list pa, t_flags *flags, int *count)
 	if (!hexa)
 		return ;
 	to_print = treat_flags_hexa(*flags, hexa, count);
+	if (!to_print)
+		return ;
 	ft_putstr(to_print);
 	free(hexa);
 	free(to_print);

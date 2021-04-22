@@ -6,31 +6,11 @@
 /*   By: lauremasson <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 19:54:00 by lauremass         #+#    #+#             */
-/*   Updated: 2021/04/21 14:14:27 by lauremass        ###   ########.fr       */
+/*   Updated: 2021/04/22 12:39:49 by lauremass        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-char	*ft_strdup(char *s1)
-{
-	size_t	len;
-	size_t	i;
-	char	*s1_copy;
-
-	len = ft_strlen(s1) + 1;
-	i = 0;
-	s1_copy = malloc((sizeof(char) * len));
-	if (!s1_copy)
-		return (NULL);
-	while (s1[i])
-	{
-		s1_copy[i] = s1[i];
-		i++;
-	}
-	s1_copy[i] = '\0';
-	return (s1_copy);
-}
 
 int		len_number_bis(unsigned long long int nbr, int base_len)
 {
@@ -74,6 +54,29 @@ char	*ft_itoa_base(unsigned long long int nbr, char *base)
 	return (str_bis);
 }
 
+void	manage_negative(long long *nbr, int *minus, char specifier)
+{
+	*minus = 1;
+	if (specifier == 'i' || specifier == 'd')
+		*nbr = *nbr * (-1);
+}
+
+char	*create(char specifier, long long nbr)
+{
+	char *str;
+
+	if (specifier == 'u' || specifier == 'i' ||
+			specifier == 'd')
+		str = ft_itoa_base((unsigned long long)nbr, DECIMAL);
+	if (specifier == 'x' || specifier == 'p')
+		str = ft_itoa_base((unsigned long long)nbr, HEXADECIMAL_MIN);
+	if (specifier == 'X')
+		str = ft_itoa_base((unsigned long long)nbr, HEXADECIMAL_MAJ);
+	if (!str)
+		return (NULL);
+	return (str);
+}
+
 char	*ft_transform(long long nbr, t_flags flags)
 {
 	int		minus;
@@ -82,20 +85,16 @@ char	*ft_transform(long long nbr, t_flags flags)
 
 	minus = 0;
 	if (nbr < 0)
-	{
-		minus = 1;
-		if (flags.specifier == 'i' || flags.specifier == 'd')
-			nbr = nbr * (-1);
-	}
-	if (flags.specifier == 'u' || flags.specifier == 'i' ||
-			flags.specifier == 'd')
-		str = ft_itoa_base((unsigned long long)nbr, DECIMAL);
-	if (flags.specifier == 'x' || flags.specifier == 'p')
-		str = ft_itoa_base((unsigned long long)nbr, HEXADECIMAL_MIN);
-	if (flags.specifier == 'X')
-		str = ft_itoa_base((unsigned long long)nbr, HEXADECIMAL_MAJ);
+		manage_negative(&nbr, &minus, flags.specifier);
+	str = create(flags.specifier, nbr);
+	if (!str)
+		return (NULL);
 	if (minus == 1 && flags.specifier != 'p')
+	{
 		final = ft_strjoin("-", str);
+		if (!final)
+			return (NULL);
+	}
 	else
 		return (str);
 	free(str);
