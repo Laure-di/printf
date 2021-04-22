@@ -6,18 +6,11 @@
 /*   By: lauremasson <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 12:46:02 by lauremass         #+#    #+#             */
-/*   Updated: 2021/04/22 12:08:40 by lauremass        ###   ########.fr       */
+/*   Updated: 2021/04/22 13:28:06 by lauremass        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void		print(int *i, int *count, char c)
-{
-	write(1, &c, 1);
-	count++;
-	i++;
-}
 
 void		print_argument(t_flags *flags, va_list pa, int *count)
 {

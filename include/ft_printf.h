@@ -6,7 +6,7 @@
 /*   By: lmasson <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 17:13:07 by lmasson           #+#    #+#             */
-/*   Updated: 2021/04/22 12:41:11 by lauremass        ###   ########.fr       */
+/*   Updated: 2021/04/22 13:28:42 by lauremass        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ typedef struct		s_flags
 	int				precision;
 	int				minus_precision;
 	va_list			pa;
-	int				preci;
 }					t_flags;
 
 void				is_width(char c, t_flags *flags);
@@ -42,7 +41,6 @@ void				initialize_flags(t_flags *flags);
 void				check_flags(char *format, int *i, t_flags *flags);
 t_flags				define_all_flags(char *format, int *i, va_list pa);
 void				is_minus_precision(char c, t_flags *flags);
-void				is_minus(char c, t_flags *flags);
 void				is_stars_width(char c, t_flags *flags);
 void				is_stars_precision(char c, t_flags *flags);
 char				*ft_strdup(char *s1);
@@ -99,7 +97,6 @@ char				*ft_strcpy_int(char *dst, char *src, t_flags flags);
 int					zero_fill(char *dst, char *src, int *len, int *count);
 char				*ft_strcpyend_int(char *dst, char *src, int len,
 					t_flags flags);
-void				print(int *i, int *count, char c);
 void				print_argument(t_flags *flags, va_list pa, int *count);
 int					ft_printf(const char *format, ...);
 
