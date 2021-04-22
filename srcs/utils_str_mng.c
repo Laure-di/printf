@@ -6,7 +6,7 @@
 /*   By: lauremasson <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 17:03:26 by lauremass         #+#    #+#             */
-/*   Updated: 2021/04/22 13:27:44 by lauremass        ###   ########.fr       */
+/*   Updated: 2021/04/22 13:46:51 by lauremass        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,10 @@ int		zero_fill(char *dst, char *src, int *len, int *count)
 
 char	*ft_strcpyend_int(char *dst, char *src, int len, t_flags flags)
 {
-	int		j;
 	int		count;
 	int		minus;
 
-	j = ft_strlen(src) - 1;
 	count = 0;
-	minus = 0;
 	len--;
 	minus = zero_fill(dst, src, &len, &count);
 	while (count < flags.precision || (flags.zero == 1 && count < flags.width))

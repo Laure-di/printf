@@ -6,7 +6,7 @@
 /*   By: lauremasson <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 22:30:35 by lauremass         #+#    #+#             */
-/*   Updated: 2021/04/22 12:38:35 by lauremass        ###   ########.fr       */
+/*   Updated: 2021/04/22 13:46:17 by lauremass        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ char		*ft_strcpy(char *dst, char *src)
 	int		i;
 
 	i = 0;
-	while (src[i] && src)
+	while (src && src[i])
 	{
 		dst[i] = src[i];
 		i++;

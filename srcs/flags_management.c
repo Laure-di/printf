@@ -6,7 +6,7 @@
 /*   By: lmasson <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 15:21:55 by lmasson           #+#    #+#             */
-/*   Updated: 2021/04/22 13:27:07 by lauremass        ###   ########.fr       */
+/*   Updated: 2021/04/22 13:33:12 by lauremass        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void		initialize_flags(t_flags *flags)
 	flags->dot = 0;
 	flags->precision = 0;
 	flags->minus_precision = 0;
-	flags->preci = 0;
 }
 
 void		check_flags(char *format, int *i, t_flags *flags)

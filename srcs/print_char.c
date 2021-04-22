@@ -6,7 +6,7 @@
 /*   By: lmasson <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 12:34:59 by lmasson           #+#    #+#             */
-/*   Updated: 2021/04/22 12:57:51 by lauremass        ###   ########.fr       */
+/*   Updated: 2021/04/22 13:31:45 by lauremass        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void		print_char(t_flags flags, va_list pa, int *count)
 	if (!to_print)
 		return ;
 	len = ft_strlen(to_print);
-	*count += flags.width;
+	*count += len;
 	ft_putstr(to_print);
 	free(to_print);
 }

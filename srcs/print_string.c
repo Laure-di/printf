@@ -6,7 +6,7 @@
 /*   By: lauremasson <marvin@42.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 14:16:36 by lauremass         #+#    #+#             */
-/*   Updated: 2021/04/22 12:36:28 by lauremass        ###   ########.fr       */
+/*   Updated: 2021/04/22 13:35:04 by lauremass        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,10 +101,8 @@ void		manage_flags_str(t_flags *flags, char *str, int len, int *count)
 void		print_str(t_flags flags, va_list pa, int *count)
 {
 	char	*str;
-	int		j;
 	int		len;
 
-	j = 0;
 	str = va_arg(pa, char*);
 	if (!str)
 		str = "(null)";
